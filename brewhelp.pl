@@ -20,13 +20,14 @@ for @modules -> $module {
     $proc = run 'brew', 'info', $module, :out;
     for $proc.out.lines -> $line {
         given $line {
-            when m/Build\:/ {
+            when /Build\:/ {
                 $m.builds = splitline(~$/.postmatch);
             }
-            when m/Required\:/ {
+            when /Required\:/ {
                 $m.requireds = splitline(~$/.postmatch);
             }
-            when m/Recommended\:/ {
+            say $line;
+            when /Recommended\:/ {
                 $m.recommendeds = splitline(~$/.postmatch);
             }
         }
@@ -65,7 +66,6 @@ for %moduleHash.kv -> $key, $value {
 
 for %moduleHash.keys -> $key {
     #say $key, %moduleHash{$key};
-    say $key, %resultHash{$key};
+    say $key, ' ', %resultHash{$key};
 }
 say %moduleHash.elems;
-
