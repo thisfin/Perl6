@@ -26,7 +26,6 @@ for @modules -> $module {
             when /Required\:/ {
                 $m.requireds = splitline(~$/.postmatch);
             }
-            say $line;
             when /Recommended\:/ {
                 $m.recommendeds = splitline(~$/.postmatch);
             }
