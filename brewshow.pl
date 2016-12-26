@@ -6,7 +6,7 @@ my %mappingHash = ('build' => 'Build:', 'required' => 'Required:', 'recommended'
 
 my %moduleHash;
 for run('brew', 'list', :out).out.words -> $moduleName {
-	my %valueHash;
+    my %valueHash;
     for run('brew', 'info', $moduleName, :out).out.lines -> $line {
         given $line {
             for %mappingHash.kv -> $mappingName, $regex {
