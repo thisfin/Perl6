@@ -1,2 +1,3 @@
 # Perl6
-Perl 6 测试
+
+homebrew包依赖关系查询, 方便剔除冗余包. Perl6编写
